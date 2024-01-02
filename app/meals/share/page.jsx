@@ -1,8 +1,10 @@
 import ImagePicker from '@/components/image-picker/image-picker';
+import { shareMeal } from '@/lib/actions';
 import styles from './page.module.css';
 
 
 export default function ShareMealPage() {
+
     return (
         <>
             <header className={styles.header}>
@@ -10,11 +12,13 @@ export default function ShareMealPage() {
                     Share your <span className={styles.highlight}>favorite meal</span>
                 </h1>
 
-                <p>Or any other meal you feel needs sharing!</p>
+                <p>
+                    Or any other meal you feel needs sharing!
+                </p>
             </header>
 
             <main className={styles.main}>
-                <form className={styles.form}>
+                <form className={styles.form} action={shareMeal}>
                     <div className={styles.row}>
                         <p>
                             <label htmlFor="name">
@@ -62,8 +66,11 @@ export default function ShareMealPage() {
                         ></textarea>
                     </p>
 
-                    <ImagePicker />
-                    
+                    <ImagePicker
+                        label="User image"
+                        name="image"
+                    />
+
                     <p className={styles.actions}>
                         <button type="submit">
                             Share Meal
